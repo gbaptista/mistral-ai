@@ -2,7 +2,7 @@
 
 A Ruby gem for interacting with [Mistral AI](https://mistral.ai)'s large language models.
 
-![Mistral AI](https://gist.github.com/assets/29520/3f312efd-9399-4c23-8106-6f0b60163b29)
+![The image features a graphic that merges a red ruby gem with a robotic face to symbolize the integration of a Ruby software library with Mistral AI's technology. The ruby has a reflective white top facet and the robot face includes two orange eyes, reflecting the Mistral AI logo's color. The design is modern and set against a dark background to emphasize the gem and robotic features.](https://raw.githubusercontent.com/gbaptista/assets/main/mistral-ai/ruby-mistral-ai.png)
 
 > _This Gem is designed to provide low-level access to Mistral, enabling people to build abstractions on top of it. If you are interested in more high-level abstractions or more user-friendly tools, you may want to consider [Nano Bots](https://github.com/icebaker/ruby-nano-bots) 💎 🤖._
 
