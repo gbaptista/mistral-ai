@@ -51,7 +51,7 @@ module Mistral
         request('v1/models', nil, server_sent_events: false, request_method: 'GET', &callback)
       end
 
-      def request(path, payload, server_sent_events: nil, request_method: 'POST', &callback)
+      def request(path, payload = nil, server_sent_events: nil, request_method: 'POST', &callback)
         server_sent_events_enabled = server_sent_events.nil? ? @server_sent_events : server_sent_events
         url = "#{@address}#{path}"
 
@@ -62,7 +62,7 @@ module Mistral
 
         results = []
 
-        method_to_call = request_method == 'POST' ? :post : :get
+        method_to_call = request_method.to_s.strip.downcase.to_sym
 
         response = Faraday.new(request: @request_options) do |faraday|
           faraday.response :raise_error
