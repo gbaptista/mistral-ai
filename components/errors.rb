@@ -10,7 +10,6 @@ module Mistral
 
     class MissingAPIKeyError < MistralError; end
     class BlockWithoutServerSentEventsError < MistralError; end
-    class UnsupportedError < MistralError; end
 
     class RequestError < MistralError
       attr_reader :request, :payload

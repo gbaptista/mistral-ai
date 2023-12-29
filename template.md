@@ -464,7 +464,6 @@ MistralError
 
 MissingAPIKeyError
 BlockWithoutServerSentEventsError
-UnsupportedError
 
 RequestError
 ```
