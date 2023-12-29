@@ -380,7 +380,8 @@ Mistral may launch a new endpoint that we haven't covered in the Gem yet. If tha
 result = client.request(
   'v1/chat/completions',
   { model: 'mistral-medium',
-    messages: [{ role: 'user', content: 'hi!' }] }
+    messages: [{ role: 'user', content: 'hi!' }] },
+  request_method: 'POST'
 )
 ```
 
