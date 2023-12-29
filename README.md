@@ -411,7 +411,7 @@ result = client.request(
   'v1/chat/completions',
   { model: 'mistral-medium',
     messages: [{ role: 'user', content: 'hi!' }] },
-  request_method: 'POST'
+  request_method: 'POST', server_sent_events: true
 )
 ```
 
