@@ -43,13 +43,17 @@ module Mistral
         request('v1/chat/completions', payload, server_sent_events:, &callback)
       end
 
-      def embeddings(payload, server_sent_events: nil, &callback)
+      def embeddings(payload, _server_sent_events: nil, &callback)
         request('v1/embeddings', payload, server_sent_events: false, &callback)
       end
 
-      def request(path, payload, server_sent_events: nil, &callback)
+      def models(_server_sent_events: nil, &callback)
+        request('v1/models', nil, server_sent_events: false, request_method: 'GET', &callback)
+      end
+
+      def request(path, payload, server_sent_events: nil, request_method: 'POST', &callback)
         server_sent_events_enabled = server_sent_events.nil? ? @server_sent_events : server_sent_events
-        url = "#{@address}/#{path}"
+        url = "#{@address}#{path}"
 
         if !callback.nil? && !server_sent_events_enabled
           raise BlockWithoutServerSentEventsError,
@@ -58,15 +62,17 @@ module Mistral
 
         results = []
 
+        method_to_call = request_method == 'POST' ? :post : :get
+
         response = Faraday.new(request: @request_options) do |faraday|
           faraday.response :raise_error
-        end.post do |request|
+        end.send(method_to_call) do |request|
           request.url url
           request.headers['Content-Type'] = 'application/json'
 
           request.headers['Authorization'] = "Bearer #{@api_key}" unless @api_key.nil?
 
-          request.body = payload.to_json
+          request.body = payload.to_json unless payload.nil?
 
           if server_sent_events_enabled
             parser = EventStreamParser::Parser.new
