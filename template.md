@@ -241,6 +241,45 @@ Result:
 
 ```
 
+#### models
+
+```ruby
+result = client.models
+```
+
+Result:
+```ruby
+{ 'object' => 'list',
+  'data' =>
+  [{ 'id' => 'mistral-medium',
+     'object' => 'model',
+     'created' => 1_703_855_983,
+     'owned_by' => 'mistralai',
+     'root' => nil,
+     'parent' => nil,
+     'permission' =>
+     [{ 'id' => 'modelperm-30...',
+        'object' => 'model_permission',
+        'created' => 1_703_855_983,
+        'allow_create_engine' => false,
+        'allow_sampling' => true,
+        'allow_logprobs' => false,
+        'allow_search_indices' => false,
+        'allow_view' => true,
+        'allow_fine_tuning' => false,
+        'organization' => '*',
+        'group' => nil,
+        'is_blocking' => false }] },
+   { 'id' => 'mistral-small',
+     'object' => 'model',
+     'created' => 1_703_855_983,
+     'owned_by' => 'mistralai',
+     # ...
+     },
+   # ...
+   ] }
+```
+
 ### Streaming and Server-Sent Events (SSE)
 
 [Server-Sent Events (SSE)](https://en.wikipedia.org/wiki/Server-sent_events) is a technology that allows certain endpoints to offer streaming capabilities, such as creating the impression that "the model is typing along with you," rather than delivering the entire answer all at once.
