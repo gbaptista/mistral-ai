@@ -61,6 +61,7 @@ Result:
             - [Without Streaming Events](#without-streaming-events)
             - [Receiving Stream Events](#receiving-stream-events)
         - [embeddings](#embeddings)
+        - [models](#models)
     - [Streaming and Server-Sent Events (SSE)](#streaming-and-server-sent-events-sse)
         - [Server-Sent Events (SSE) Hang](#server-sent-events-sse-hang)
     - [System Messages](#system-messages)
@@ -268,6 +269,45 @@ Result:
   'model' => 'mistral-embed',
   'usage' => { 'prompt_tokens' => 15, 'total_tokens' => 15, 'completion_tokens' => 0 } }
 
+```
+
+#### models
+
+```ruby
+result = client.models
+```
+
+Result:
+```ruby
+{ 'object' => 'list',
+  'data' =>
+  [{ 'id' => 'mistral-medium',
+     'object' => 'model',
+     'created' => 1_703_855_983,
+     'owned_by' => 'mistralai',
+     'root' => nil,
+     'parent' => nil,
+     'permission' =>
+     [{ 'id' => 'modelperm-30...',
+        'object' => 'model_permission',
+        'created' => 1_703_855_983,
+        'allow_create_engine' => false,
+        'allow_sampling' => true,
+        'allow_logprobs' => false,
+        'allow_search_indices' => false,
+        'allow_view' => true,
+        'allow_fine_tuning' => false,
+        'organization' => '*',
+        'group' => nil,
+        'is_blocking' => false }] },
+   { 'id' => 'mistral-small',
+     'object' => 'model',
+     'created' => 1_703_855_983,
+     'owned_by' => 'mistralai',
+     # ...
+     },
+   # ...
+   ] }
 ```
 
 ### Streaming and Server-Sent Events (SSE)
