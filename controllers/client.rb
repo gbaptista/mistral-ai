@@ -114,7 +114,7 @@ module Mistral
       end
 
       def safe_parse_json(raw)
-        raw.start_with?('{', '[') ? JSON.parse(raw) : raw
+        raw.to_s.lstrip.start_with?('{', '[') ? JSON.parse(raw) : raw
       rescue JSON::ParserError
         raw
       end
