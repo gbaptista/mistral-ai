@@ -2,7 +2,7 @@
 
 require 'dotenv/load'
 
-require 'mistral-ai'
+require_relative '../../ports/dsl/mistral-ai'
 
 begin
   client = Mistral.new(
