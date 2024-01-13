@@ -4,7 +4,7 @@ require 'event_stream_parser'
 require 'faraday'
 require 'json'
 
-require_relative '../ports/dsl/mistral-ai/errors'
+require_relative '../components/errors'
 
 module Mistral
   module Controllers
@@ -24,7 +24,7 @@ module Mistral
                    end
 
         if @api_key.nil? && @address == "#{DEFAULT_ADDRESS}/"
-          raise MissingAPIKeyError, 'Missing API Key, which is required.'
+          raise Errors::MissingAPIKeyError, 'Missing API Key, which is required.'
         end
 
         @request_options = config.dig(:options, :connection, :request)
@@ -56,7 +56,7 @@ module Mistral
         url = "#{@address}#{path}"
 
         if !callback.nil? && !server_sent_events_enabled
-          raise BlockWithoutServerSentEventsError,
+          raise Errors::BlockWithoutServerSentEventsError,
                 'You are trying to use a block without Server Sent Events (SSE) enabled.'
         end
 
@@ -110,7 +110,7 @@ module Mistral
 
         results.map { |result| result[:event] }
       rescue Faraday::ServerError => e
-        raise RequestError.new(e.message, request: e, payload:)
+        raise Errors::RequestError.new(e.message, request: e, payload:)
       end
 
       def safe_parse_json(raw)
