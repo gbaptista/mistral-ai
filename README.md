@@ -9,7 +9,7 @@ A Ruby gem for interacting with [Mistral AI](https://mistral.ai)'s large languag
 ## TL;DR and Quick Start
 
 ```ruby
-gem 'mistral-ai', '~> 1.1.2'
+gem 'mistral-ai', '~> 1.2.0'
 ```
 
 ```ruby
@@ -86,11 +86,11 @@ Result:
 ### Installing
 
 ```sh
-gem install mistral-ai -v 1.1.2
+gem install mistral-ai -v 1.2.0
 ```
 
 ```sh
-gem 'mistral-ai', '~> 1.1.2'
+gem 'mistral-ai', '~> 1.2.0'
 ```
 
 ### Credentials
@@ -535,7 +535,7 @@ gem build mistral-ai.gemspec
 
 gem signin
 
-gem push mistral-ai-1.1.2.gem
+gem push mistral-ai-1.2.0.gem
 ```
 
 ### Updating the README

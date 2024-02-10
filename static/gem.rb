@@ -3,7 +3,7 @@
 module Mistral
   GEM = {
     name: 'mistral-ai',
-    version: '1.1.2',
+    version: '1.2.0',
     author: 'gbaptista',
     summary: 'Interact with Mistral AI.',
     description: "A Ruby gem for interacting with Mistral AI's large language models.",

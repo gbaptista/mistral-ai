@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    mistral-ai (1.1.2)
+    mistral-ai (1.2.0)
       event_stream_parser (~> 1.0)
       faraday (~> 2.9)
       faraday-typhoeus (~> 1.1)
