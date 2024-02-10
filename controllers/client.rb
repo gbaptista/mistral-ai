@@ -2,6 +2,7 @@
 
 require 'event_stream_parser'
 require 'faraday'
+require 'faraday/typhoeus'
 require 'json'
 
 require_relative '../components/errors'
@@ -12,6 +13,8 @@ module Mistral
       DEFAULT_ADDRESS = 'https://api.mistral.ai'
 
       ALLOWED_REQUEST_OPTIONS = %i[timeout open_timeout read_timeout write_timeout].freeze
+
+      DEFAULT_FARADAY_ADAPTER = :typhoeus
 
       def initialize(config)
         @api_key = config.dig(:credentials, :api_key)
@@ -36,6 +39,8 @@ module Mistral
                            else
                              {}
                            end
+
+        @faraday_adapter = config.dig(:options, :connection, :adapter) || DEFAULT_FARADAY_ADAPTER
       end
 
       def chat_completions(payload, server_sent_events: nil, &callback)
@@ -65,6 +70,7 @@ module Mistral
         method_to_call = request_method.to_s.strip.downcase.to_sym
 
         response = Faraday.new(request: @request_options) do |faraday|
+          faraday.adapter @faraday_adapter
           faraday.response :raise_error
         end.send(method_to_call) do |request|
           request.url url

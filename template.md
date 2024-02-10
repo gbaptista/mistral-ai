@@ -387,6 +387,21 @@ result = client.request(
 
 ### Request Options
 
+#### Adapter
+
+The gem uses [Faraday](https://github.com/lostisland/faraday) with the [Typhoeus](https://github.com/typhoeus/typhoeus) adapter by default.
+
+You can use a different adapter if you want:
+
+```ruby
+require 'faraday/net_http'
+
+client = Mistral.new(
+  credentials: { api_key: ENV['MISTRAL_API_KEY'] },
+  options: { connection: { adapter: :net_http } }
+)
+```
+
 #### Timeout
 
 You can set the maximum number of seconds to wait for the request to complete with the `timeout` option:
