@@ -10,6 +10,6 @@ module Mistral
     github: 'https://github.com/gbaptista/mistral-ai',
     gem_server: 'https://rubygems.org',
     license: 'MIT',
-    ruby: '3.1.0'
+    ruby: '3.0.0'
   }.freeze
 end
